@@ -1,10 +1,8 @@
 //计算加密后的密码
 const crypto = require('crypto');
-const hash = crypto.createHash('sha512');
 
 function sha512(input) {
-	hash.update(input);
-	return hash.digest('hex');
+	return crypto.createHash('sha512').update(input).digest('hex');
 }
 
 function Password(input) {
