@@ -15,8 +15,11 @@ class HelloMessage extends React.Component {
 	render() {
 		var value = this.state.value;
 		return <div>
-			<input type="password" value={value} onChange={this.handleChange} />
-			<h4>{Password(value)}</h4>
+			<p>在此输入您的密码：</p>
+			<input autofocus="autofocus" type="password" value={value} onChange={this.handleChange} />
+			<br />
+			<p>转换后的密码：</p>
+			<input readonly="readonly" type="text" value={Password(value)}  />
 		</div>;
 	}
 }
