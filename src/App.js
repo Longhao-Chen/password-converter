@@ -4,7 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { Button } from 'react-bootstrap';
 import Password from './Password';
 
-class HelloMessage extends React.Component {
+class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -52,7 +52,7 @@ function App() {
 		<div className="App">
 			<h1>密码转换器</h1>
 			<hr />
-			<HelloMessage />
+			<Main />
 		</div>
 	);
 }
