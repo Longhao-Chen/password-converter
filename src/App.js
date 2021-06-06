@@ -12,6 +12,7 @@ class Main extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.cleanPassword = this.cleanPassword.bind(this);
+		this.inputRef = React.createRef();
 	}
 
 	handleChange(event) {
@@ -28,12 +29,13 @@ class Main extends React.Component {
 			password: '',
 			copied: false
 		});
+		this.inputRef.current.focus();
 	}
 
 	render() {
 		return <div>
 			<p>在此输入您的密码：</p>
-			<input autoFocus="autofocus" type="password" value={this.state.value} onChange={this.handleChange} />
+			<input autoFocus="autofocus" type="password" value={this.state.value} onChange={this.handleChange} ref={this.inputRef} />
 			<Button variant="danger" onClick={this.cleanPassword}>清除密码</Button>
 			<br />
 			<p>转换后的密码：</p>
