@@ -1,10 +1,11 @@
 import './App.css';
 import React from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import copy from 'copy-to-clipboard';
 import { Button, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import Password from './Password';
+import Key from './Key';
 
 class Main extends React.Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class Main extends React.Component {
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.cleanPassword = this.cleanPassword.bind(this);
+		this.copyPassword = this.copyPassword.bind(this);
 		this.inputRef = React.createRef();
 	}
 
@@ -34,8 +36,25 @@ class Main extends React.Component {
 		this.inputRef.current.focus();
 	}
 
+	copyPassword() {
+		copy(this.state.password, {
+			message: ''
+		});
+		this.setState({ copied: true });
+	}
+
 	render() {
 		return <div className="container col-11 col-md-6 col-lg-5 col-xl-4">
+			{/*键盘事件*/}
+			<Key keyCode={13} func={this.copyPassword} />	{/*Enter*/}
+			<Key keyCode={67} ctrlKey={true} func={this.copyPassword} />	{/*Ctrl+C*/}
+			<Key keyCode={8} ctrlKey={true} func={this.cleanPassword} />	{/*Ctrl+Backspace*/}
+			<Key keyCode={73} altKey={true} func={
+				() => { this.setState({ showInput: true ^ this.state.showInput }); }
+			} />	{/*Alt+I*/}
+			<Key keyCode={79} altKey={true} func={
+				() => { this.setState({ showOutput: true ^ this.state.showOutput }); }
+			} />	{/*Alt+O*/}
 			<InputGroup>
 				<input placeholder="在此输入您的密码"
 					autoFocus="autofocus"
@@ -68,10 +87,7 @@ class Main extends React.Component {
 						() => this.setState({ showOutput: true ^ this.state.showOutput })
 					} icon={this.state.showOutput ? faEyeSlash : faEye} />
 				</span>
-				<CopyToClipboard text={this.state.password}
-					onCopy={() => this.setState({ copied: true })}>
-					<Button>{this.state.copied ? "已复制" : "复制"}</Button>
-				</CopyToClipboard>
+				<Button onClick={this.copyPassword} >{this.state.copied ? "已复制" : "复制"}</Button>
 			</InputGroup>
 		</div>;
 	}
