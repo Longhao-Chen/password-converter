@@ -41,6 +41,7 @@ class Main extends React.Component {
 			message: ''
 		});
 		this.setState({ copied: true });
+		this.inputRef.current.focus();
 	}
 
 	render() {
@@ -84,7 +85,10 @@ class Main extends React.Component {
 					value={this.state.password} />
 				<span className="input-group-text">
 					<FontAwesomeIcon onClick={
-						() => this.setState({ showOutput: true ^ this.state.showOutput })
+						() => {
+							this.setState({ showOutput: true ^ this.state.showOutput });
+							this.inputRef.current.focus();
+						}
 					} icon={this.state.showOutput ? faEyeSlash : faEye} />
 				</span>
 				<Button onClick={this.copyPassword} >{this.state.copied ? "已复制" : "复制"}</Button>
