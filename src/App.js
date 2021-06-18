@@ -3,9 +3,10 @@ import React from 'react';
 import copy from 'copy-to-clipboard';
 import { Button, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash, faCopy, faBackspace } from '@fortawesome/free-solid-svg-icons'
 import Password from './Password';
 import Key from './Key';
+import cover_clipboard from './Security'
 
 class Main extends React.Component {
 	constructor(props) {
@@ -22,25 +23,20 @@ class Main extends React.Component {
 	handleChange(event) {
 		this.setState({
 			password: Password(event.target.value),
-			value: event.target.value,
-			copied: false
+			value: event.target.value
 		});
 	}
 
 	cleanPassword() {
 		this.setState({
 			value: '',
-			password: '',
-			copied: false
+			password: ''
 		});
 		this.inputRef.current.focus();
 	}
 
 	copyPassword() {
-		copy(this.state.password, {
-			message: ''
-		});
-		this.setState({ copied: true });
+		copy(this.state.password);
 		this.inputRef.current.focus();
 	}
 
@@ -72,7 +68,9 @@ class Main extends React.Component {
 						}
 					} icon={this.state.showInput ? faEyeSlash : faEye} />
 				</span>
-				<Button variant="danger" onClick={this.cleanPassword}>清除</Button>
+				<Button onClick={this.cleanPassword}>
+					<FontAwesomeIcon icon={faBackspace} />
+				</Button>
 			</InputGroup>
 			<hr />
 
@@ -91,7 +89,10 @@ class Main extends React.Component {
 						}
 					} icon={this.state.showOutput ? faEyeSlash : faEye} />
 				</span>
-				<Button onClick={this.copyPassword} >{this.state.copied ? "已复制" : "复制"}</Button>
+				<Button onClick={this.copyPassword}>
+					<FontAwesomeIcon icon={faCopy} />
+				</Button>
+				<Button variant="danger" onClick={cover_clipboard}>覆盖剪切板</Button>
 			</InputGroup>
 		</div>;
 	}

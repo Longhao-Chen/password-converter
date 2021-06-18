@@ -20,6 +20,7 @@ https://longhao-chen.github.io/password-converter/
 | Ctrl + Backspace| 清除密码          |
 | Alt + I       | 输入密码可见性切换  |
 | Alt + O       | 生成的密码可见性切换|
+| Ctrl + Delete | 覆盖剪切板20次      |
 
 ## 安全性
 程序的源代码全部都是公开的，任何人都可以查看，所用的散列算法为 `sha512`。
