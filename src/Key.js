@@ -11,7 +11,7 @@ export default class Key extends React.Component {
 	}
 
 	onKeyDown = (e) => {
-		if (e.keyCode === this.props.keyCode &&
+		if (e.key.toLowerCase() === this.props.keyName.toLowerCase() &&	//不区分大小写
 			!(e.ctrlKey ^ this.props.ctrlKey) &&
 			!(e.shiftKey ^ this.props.shiftKey) &&
 			!(e.altKey ^ this.props.altKey)) {

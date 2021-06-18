@@ -47,13 +47,13 @@ class Main extends React.Component {
 	render() {
 		return <div className="container col-11 col-md-6 col-lg-5 col-xl-4">
 			{/*键盘事件*/}
-			<Key keyCode={13} func={this.copyPassword} />	{/*Enter*/}
-			<Key keyCode={67} ctrlKey={true} func={this.copyPassword} />	{/*Ctrl+C*/}
-			<Key keyCode={8} ctrlKey={true} func={this.cleanPassword} />	{/*Ctrl+Backspace*/}
-			<Key keyCode={73} altKey={true} func={
+			<Key keyName={"Enter"} func={this.copyPassword} />	{/*Enter*/}
+			<Key keyName={"c"} ctrlKey={true} func={this.copyPassword} />	{/*Ctrl+C*/}
+			<Key keyName={"Backspace"} ctrlKey={true} func={this.cleanPassword} />	{/*Ctrl+Backspace*/}
+			<Key keyName={"i"} altKey={true} func={
 				() => { this.setState({ showInput: true ^ this.state.showInput }); }
 			} />	{/*Alt+I*/}
-			<Key keyCode={79} altKey={true} func={
+			<Key keyName={"o"} altKey={true} func={
 				() => { this.setState({ showOutput: true ^ this.state.showOutput }); }
 			} />	{/*Alt+O*/}
 			<InputGroup>
