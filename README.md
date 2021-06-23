@@ -1,8 +1,9 @@
 # 密码生成器
+![](https://github.com/Longhao-Chen/password-converter/workflows/Deploy%20Github%20pages/badge.svg)
+
 通过 `sha512` 将可记忆的密码不可逆的转换成可安全使用的密码。
 
-网页版：
-https://longhao-chen.github.io/password-converter/
+你可以在 https://longhao-chen.github.io/password-converter/ 尝试此程序。
 
 ## 这个程序解决了一个什么问题？
 很多网站或程序都需要一个账号，而每一个账号都需要一个密码。如果保持所有账号的密码都一致或使用同一种模式，那么只需要有一个账号的密码发生泄漏就会影响的所有账号的安全；如果每个账号都使用不同密码，这样就会造成记忆的困难。这个程序通过散列函数，让我们能够安全的使用有便于记忆的密码来设置不同账号的密码。
@@ -29,7 +30,13 @@ https://longhao-chen.github.io/password-converter/
 ## 算法
 见 `src/Password.js`
 
-## 编译
+## 开发
 ```
-npm run build
+git clone https://github.com/Longhao-Chen/password-converter.git
+
+cd password-converter
+
+npm i
+
+npm run start
 ```
