@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye, faEyeSlash, faCopy, faBackspace, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Password from './Password';
 import Key from './Key';
-import cover_clipboard from './Security'
+import { cover_clipboard } from './Security'
 
 class Main extends React.Component {
 	constructor(props) {
@@ -101,7 +101,17 @@ class Main extends React.Component {
 				<Button onClick={this.copyPassword}>
 					<FontAwesomeIcon icon={this.state.copied ? faCheck : faCopy} />
 				</Button>
-				<Button variant="danger" onClick={cover_clipboard}>覆盖剪切板</Button>
+				<Button variant="danger"
+					disabled={this.state.cover ? 'disabled' : ''/*防止重复点击造成意外效果*/}
+					onClick={
+						() => {
+							cover_clipboard();
+							this.setState({ cover: true });
+							setTimeout(() => {
+								this.setState({ cover: false })
+							}, 2500);
+						}
+					}>{this.state.cover ? '已覆盖完成' : '覆盖剪切板'}</Button>
 			</InputGroup>
 		</div>;
 	}

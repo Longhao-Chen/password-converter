@@ -8,11 +8,16 @@ function RandomPassword() {
 	return Password(Math.random().toString());
 }
 
+function sleep(time) {
+	return new Promise((resolve) => setTimeout(resolve, time));
+}
+
 //使用随机密码覆盖剪切板20次
-export async function cover_clipboard() {
+export function cover_clipboard() {
 	for (var i = 0; i < 20; ++i) {
-		copy(RandomPassword());
+		sleep(250).then(copy(RandomPassword()));
 	}
+	return true;
 }
 
 function Security() {
