@@ -3,7 +3,7 @@ import React from 'react';
 import copy from 'copy-to-clipboard';
 import { Button, InputGroup } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faEyeSlash, faCopy, faBackspace } from '@fortawesome/free-solid-svg-icons'
+import { faEye, faEyeSlash, faCopy, faBackspace, faCheck } from '@fortawesome/free-solid-svg-icons'
 import Password from './Password';
 import Key from './Key';
 import cover_clipboard from './Security'
@@ -12,7 +12,8 @@ class Main extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: ''
+			value: '',
+			copied: false
 		};
 		this.handleChange = this.handleChange.bind(this);
 		this.cleanPassword = this.cleanPassword.bind(this);
@@ -37,6 +38,14 @@ class Main extends React.Component {
 
 	copyPassword() {
 		copy(this.state.password);
+		this.setState({
+			copied: true
+		});
+
+		//复制完成图标自动消失
+		setTimeout(() => {
+			this.setState({ copied: false })
+		}, 2500);
 		this.inputRef.current.focus();
 	}
 
@@ -90,7 +99,7 @@ class Main extends React.Component {
 					} icon={this.state.showOutput ? faEyeSlash : faEye} />
 				</span>
 				<Button onClick={this.copyPassword}>
-					<FontAwesomeIcon icon={faCopy} />
+					<FontAwesomeIcon icon={this.state.copied ? faCheck : faCopy} />
 				</Button>
 				<Button variant="danger" onClick={cover_clipboard}>覆盖剪切板</Button>
 			</InputGroup>
