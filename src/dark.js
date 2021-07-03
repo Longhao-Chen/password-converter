@@ -14,7 +14,7 @@ class Dark extends React.Component {
 		};
 		this.setMode = this.setMode.bind(this);
 		this.setDark = this.setDark.bind(this);
-		this.setDark();
+		this.setDark(this.state.mode);
 	}
 
 	setMode(mode) {
@@ -22,11 +22,7 @@ class Dark extends React.Component {
 			mode: mode
 		});
 		this.config.write(mode);
-		this.setDark(mode);	//state更新似乎需要一定时间，如果调用setDark()将读取到未修改前的值
-	}
-
-	setDark() {
-		this.setDark(this.state.mode);
+		this.setDark(mode);	//state更新似乎需要一定时间，如果调用setDark(this.state.mode)将读取到未修改前的值
 	}
 
 	setDark(mode) {
