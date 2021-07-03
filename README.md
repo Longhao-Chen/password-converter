@@ -40,7 +40,7 @@
 
 ## 算法
 密码生成的算法如下：
-```
+```javascript
 function Password(input) {
 	var pass = input;
 	//增加暴力破解的计算量，总共计算50次sha512
