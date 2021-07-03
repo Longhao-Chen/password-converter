@@ -119,11 +119,7 @@ class Main extends React.Component {
 
 function App() {
 	return (
-		<div className="App">
-			<h1>密码转换器</h1>
-			<hr />
-			<Main />
-		</div>
+		<Main />
 	);
 }
 
