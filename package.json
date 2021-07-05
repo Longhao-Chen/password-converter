@@ -1,8 +1,21 @@
 {
   "name": "password-converter",
   "version": "1.1.1",
-  "private": true,
+  "author": {
+    "name": "Longhao.Chen",
+    "email": "Longhao.Chen@outlook.com",
+    "url": "https://github.com/Longhao-Chen/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Longhao-Chen/password-converter.git"
+  },
   "homepage": ".",
+  "bugs": {
+    "url": "https://github.com/Longhao-Chen/password-converter/issues",
+    "email": "Longhao.Chen@outlook.com"
+  },
+  "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
     "@fortawesome/free-solid-svg-icons": "^5.15.3",
