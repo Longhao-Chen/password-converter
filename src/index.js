@@ -9,7 +9,7 @@ import Dark from './dark';
 ReactDOM.render(
 	<React.StrictMode>
 		<div id="title">
-			<h1 id="title-title">密码转换器</h1>
+			<h1 id="title-title">Password-converter</h1>
 			<span id="title-Dark"><Dark /></span>
 		</div>
 		<hr />

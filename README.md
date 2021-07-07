@@ -1,4 +1,4 @@
-# 密码生成器
+# Password-converter
 ![](https://github.com/Longhao-Chen/password-converter/workflows/Deploy%20Github%20pages/badge.svg)
 
 通过 `sha512` 将可记忆的密码不可逆的转换成可安全使用的密码。
@@ -41,6 +41,10 @@
 ## 算法
 密码生成的算法如下：
 ```javascript
+function sha512(input) {
+	return crypto.createHash('sha512').update(input).digest('base64');
+}
+
 function Password(input) {
 	var pass = input;
 	//增加暴力破解的计算量，总共计算50次sha512
